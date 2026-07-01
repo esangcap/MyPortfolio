@@ -236,10 +236,10 @@ function ScrollTheater() {
         <Reveal className="sticky top-24 hidden lg:block">
           <p className="font-mono text-xs uppercase text-teal-700">Selected Work</p>
           <h2 className="mt-5 text-5xl font-semibold leading-[1.04] text-[#0b1220]">
-            Recent systems with visible business shape.
+            Technology that turns busy operations into business momentum.
           </h2>
           <p className="mt-6 max-w-sm text-base leading-7 text-slate-600">
-            A mix of public GitHub work, local Codex-era projects, and commercial builds from the CV.
+            Each build connects process, data, automation, and customer experience so teams move faster, reduce manual work, and see clearer decisions.
           </p>
         </Reveal>
 
@@ -247,7 +247,7 @@ function ScrollTheater() {
           <Reveal className="lg:hidden">
             <p className="font-mono text-xs uppercase text-teal-700">Selected Work</p>
             <h2 className="mt-5 text-4xl font-semibold leading-tight text-[#0b1220]">
-              Recent systems with visible business shape.
+              Technology that turns busy operations into business momentum.
             </h2>
           </Reveal>
           {recentProjects.map((project, index) => (
