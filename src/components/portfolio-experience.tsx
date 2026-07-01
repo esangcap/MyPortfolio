@@ -96,7 +96,7 @@ const recentProjects = [
     name: "PremierCE Theme",
     type: "Shopify theme repository",
     year: "2026",
-    href: "https://github.com/esangcap/premierce_shopify",
+    href: "https://premierce.com.au",
     stack: "Shopify Liquid, storefront theme, VS Code workflow",
     summary:
       "Managed the PremierCE Shopify theme locally with a versioned repository workflow for storefront customization and maintainable theme updates.",
@@ -234,7 +234,7 @@ function ScrollTheater() {
       />
       <div className="mx-auto grid w-full max-w-[1180px] gap-10 px-4 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
         <Reveal className="sticky top-24 hidden lg:block">
-          <p className="font-mono text-xs uppercase text-teal-700">Selected Work</p>
+          <p className="font-mono text-xs uppercase text-teal-700">My Work</p>
           <h2 className="mt-5 text-5xl font-semibold leading-[1.04] text-[#0b1220]">
             Technology that turns busy operations into business momentum.
           </h2>
