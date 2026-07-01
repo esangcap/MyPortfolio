@@ -103,6 +103,16 @@ const recentProjects = [
   },
 ];
 
+const projectThemes = [
+  { bg: "#eefaf6", border: "#14b8a6", line: "#b8e5dc", accent: "#0f766e" },
+  { bg: "#fff8e8", border: "#f59e0b", line: "#f5ddb0", accent: "#b45309" },
+  { bg: "#eff6ff", border: "#38bdf8", line: "#bfdbfe", accent: "#0369a1" },
+  { bg: "#f5f3ff", border: "#8b5cf6", line: "#ddd6fe", accent: "#6d28d9" },
+  { bg: "#f1f5f9", border: "#64748b", line: "#cbd5e1", accent: "#334155" },
+  { bg: "#fff1f2", border: "#fb7185", line: "#fecdd3", accent: "#be123c" },
+  { bg: "#ecfccb", border: "#84cc16", line: "#d9f99d", accent: "#4d7c0f" },
+];
+
 const websiteWork = [
   "getboomba.com",
   "dam-health.com",
@@ -250,30 +260,56 @@ function ScrollTheater() {
               Technology that turns busy operations into business momentum.
             </h2>
           </Reveal>
-          {recentProjects.map((project, index) => (
-            <motion.a
-              key={project.name}
-              href={project.href}
-              target="_blank"
-              rel="noreferrer"
-              className="group block border border-[#0b1220]/10 bg-white p-5 shadow-[0_24px_80px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:border-teal-500/60 sm:p-7"
-              style={{ rotate: index % 2 === 0 ? rotate : undefined, y: index % 2 ? y : undefined, clipPath: index === 0 ? clip : undefined }}
-              initial={{ opacity: 0, x: 70 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: index * 0.04 }}
-            >
-              <div className="flex items-start justify-between gap-6">
-                <div>
-                  <p className="font-mono text-xs uppercase text-amber-700">{project.type} / {project.year}</p>
-                  <h3 className="mt-3 text-3xl font-semibold text-[#0b1220]">{project.name}</h3>
-                </div>
-                <ArrowUpRight className="mt-2 h-6 w-6 text-teal-700 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </div>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-slate-600">{project.summary}</p>
-              <p className="mt-6 border-t border-slate-200 pt-4 font-mono text-xs text-slate-500">{project.stack}</p>
-            </motion.a>
-          ))}
+          {recentProjects.map((project, index) => {
+            const theme = projectThemes[index % projectThemes.length];
+
+            return (
+              <motion.a
+                key={project.name}
+                href={project.href}
+                target="_blank"
+                rel="noreferrer"
+                className="group relative block overflow-hidden border border-[#0b1220]/10 p-px shadow-[0_24px_80px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:border-transparent"
+                style={{ rotate: index % 2 === 0 ? rotate : undefined, y: index % 2 ? y : undefined, clipPath: index === 0 ? clip : undefined }}
+                initial={{ opacity: 0, x: 70 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.7, delay: index * 0.04 }}
+              >
+                <span
+                  aria-hidden="true"
+                  className="absolute -inset-48 opacity-0 transition duration-500 group-hover:animate-spin group-hover:opacity-100"
+                  style={{
+                    background: `conic-gradient(from 180deg, transparent 0deg, ${theme.border} 90deg, transparent 180deg, ${theme.border} 270deg, transparent 360deg)`,
+                  }}
+                />
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-px transition duration-500 group-hover:brightness-[1.03]"
+                  style={{ backgroundColor: theme.bg }}
+                />
+                <span className="relative z-10 block p-5 sm:p-7">
+                  <span className="flex items-start justify-between gap-6">
+                    <span>
+                      <span className="font-mono text-xs uppercase" style={{ color: theme.accent }}>{project.type} / {project.year}</span>
+                      <span className="mt-3 block text-3xl font-semibold text-[#0b1220]">{project.name}</span>
+                    </span>
+                    <ArrowUpRight
+                      className="mt-2 h-6 w-6 transition group-hover:translate-x-1 group-hover:-translate-y-1"
+                      style={{ color: theme.accent }}
+                    />
+                  </span>
+                  <span className="mt-5 block max-w-2xl text-base leading-7 text-slate-600">{project.summary}</span>
+                  <span
+                    className="mt-6 block border-t pt-4 font-mono text-xs text-slate-500"
+                    style={{ borderColor: theme.line }}
+                  >
+                    {project.stack}
+                  </span>
+                </span>
+              </motion.a>
+            );
+          })}
         </div>
       </div>
     </section>
