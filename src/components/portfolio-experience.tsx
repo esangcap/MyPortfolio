@@ -60,16 +60,16 @@ const recentProjects = [
     name: "Teamio",
     type: "Product website prototype",
     year: "2026",
-    href: "https://github.com/esangcap/Teamio",
+    href: "https://teamiosupport.io",
     stack: "React, Vite, motion, conversion sections",
     summary:
       "Implemented a marketing experience from a Figma code bundle with ROI storytelling, video assets, and responsive product sections.",
   },
   {
-    name: "DyluxMerge",
+    name: "Dylux.com",
     type: "Shopify theme merge",
     year: "2026",
-    href: "https://github.com/esangcap/dylux_merge",
+    href: "https://dylux.com",
     stack: "Shopify Liquid, theme merge, storefront QA",
     summary:
       "Managed a Shopify theme merge workflow around an updated Xclusive theme, consolidating storefront changes while preserving production theme behavior.",
@@ -78,7 +78,7 @@ const recentProjects = [
     name: "QR Order",
     type: "Restaurant ordering system",
     year: "2026",
-    href: "https://github.com/esangcap/Restaurantqrcodeorderingsystem",
+    href: "https://qrorder.pro",
     stack: "React, application UI, ordering flows",
     summary:
       "Created a QR ordering product for restaurants, extending the React application experience behind qrorder.pro.",
@@ -87,7 +87,7 @@ const recentProjects = [
     name: "FourEditors 2026",
     type: "Shopify theme engineering",
     year: "2026",
-    href: "https://github.com/esangcap/FourEditors_060226",
+    href: "https://foureditors.com",
     stack: "Shopify Liquid, snippets, conversion UX, tracking hygiene",
     summary:
       "Maintained a custom Shopify theme with specialized Liquid snippets, product/course sections, checkout integrations, and URL sanitization for cleaner tracking.",
