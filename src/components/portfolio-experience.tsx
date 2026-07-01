@@ -1,0 +1,496 @@
+"use client";
+
+import Image from "next/image";
+import {
+  ArrowDown,
+  ArrowUpRight,
+  Bot,
+  Cloud,
+  Code2,
+  Download,
+  FileText,
+  GitBranch,
+  Mail,
+  Menu,
+  PanelsTopLeft,
+  Phone,
+  Quote,
+  Sparkles,
+  Workflow,
+} from "lucide-react";
+import Lenis from "lenis";
+import {
+  motion,
+  useMotionTemplate,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "motion/react";
+import { useEffect, useMemo, useRef, useState } from "react";
+
+const navigation = ["Work", "Stack", "Proof", "Timeline", "Contact"];
+
+const skills = [
+  { icon: Code2, title: "Full-stack builds", text: "React, Next.js, Node, Express, Supabase, PHP, and production UI systems." },
+  { icon: PanelsTopLeft, title: "Commerce craft", text: "Shopify Liquid, WordPress, WooCommerce, conversion UX, custom calculators, and theme systems." },
+  { icon: Bot, title: "AI automation", text: "n8n workflows, AI assistants, operational automations, and client-facing demos." },
+  { icon: Cloud, title: "Cloud delivery", text: "AWS API Gateway, Lambda, S3, EC2, Google Cloud Functions, BigQuery, and Cloud Storage." },
+];
+
+const recentProjects = [
+  {
+    name: "PeopleLens AU",
+    type: "AI HR intelligence demo",
+    year: "2026",
+    href: "https://github.com/esangcap/Peoplemindhrmsau",
+    stack: "React, Vite, Supabase, MUI, AI assistant",
+    summary:
+      "Built a polished workforce intelligence prototype with employee profiles, compliance, skills, reporting, and an AI HR assistant for client demos.",
+  },
+  {
+    name: "ES Automations",
+    type: "n8n workflow systems",
+    year: "2026",
+    href: "https://github.com/esangcap/esweb-n8n",
+    stack: "n8n, WhatsApp automation, AI agents",
+    summary:
+      "Maintained automation workflows and WhatsApp AI agent testing infrastructure for repeatable client automation delivery.",
+  },
+  {
+    name: "Teamio",
+    type: "Product website prototype",
+    year: "2026",
+    href: "https://github.com/esangcap/Teamio",
+    stack: "React, Vite, motion, conversion sections",
+    summary:
+      "Implemented a marketing experience from a Figma code bundle with ROI storytelling, video assets, and responsive product sections.",
+  },
+  {
+    name: "MyInvoicer",
+    type: "Desktop finance app",
+    year: "2026",
+    href: "https://github.com/esangcap/MyInvoicer",
+    stack: "Electron, React 19, Supabase, Recharts, jsPDF",
+    summary:
+      "Built an invoice and project finance desktop app with reporting, PDF generation, and standardized interface polish.",
+  },
+  {
+    name: "QR Order",
+    type: "Restaurant ordering system",
+    year: "2026",
+    href: "https://github.com/esangcap/Restaurantqrcodeorderingsystem",
+    stack: "React, application UI, ordering flows",
+    summary:
+      "Created a QR ordering product for restaurants, extending the React application experience behind qrorder.pro.",
+  },
+  {
+    name: "lyricsApp",
+    type: "Public GitHub project",
+    year: "2025",
+    href: "https://github.com/esangcap/lyricsApp",
+    stack: "JavaScript, React",
+    summary:
+      "Public repository for a vocalist-focused lyric picker, listed as the most recently updated public repo on GitHub.",
+  },
+];
+
+const websiteWork = [
+  "getboomba.com",
+  "dam-health.com",
+  "shop.drfranks.co.uk",
+  "slideshop.com",
+  "foureditors.com",
+  "neuftechph.com",
+  "thepowdershampoo.com",
+  "beautebynature.com",
+];
+
+const testimonials = [
+  {
+    quote:
+      "Eric is a developer you can trust. Thinks along, can communicate well and quickly and is also very skilled.",
+    name: "Tim",
+    role: "CEO, Four Editors",
+  },
+  {
+    quote:
+      "Very professional and highly skilled at his craft. I will try to work with him again for any needs in the future.",
+    name: "Matt Gramer",
+    role: "CEO, Kentucky Counseling Center",
+  },
+  {
+    quote:
+      "The end product exceeds my expectations. Excellent work and very professional.",
+    name: "Alex Blastique",
+    role: "Operations Manager, Neuftech",
+  },
+];
+
+const timeline = [
+  ["2026", "Recent product systems", "PeopleLens AU, ES Automations, Teamio, MyInvoicer, Neuftech PH, and QR Order."],
+  ["2025", "Shopify project delivery", "utilise social, AVAMIA, DAM Health, Dr. Franks, Uniquely Lola James, and Screen Shaver."],
+  ["2024", "Membership commerce", "slideshop.com rebuild with paid-member template download restrictions."],
+  ["2022-2024", "Lead Shopify developer", "getboomba.com conversion features, theme customization, and stakeholder delivery."],
+  ["2010-2020", "Enterprise web developer", "Emirates Airlines internal web systems and cross-department data experiences."],
+];
+
+function useLenis() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.15,
+      lerp: 0.09,
+      smoothWheel: true,
+    });
+
+    let rafId = 0;
+    const raf = (time: number) => {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    };
+
+    rafId = requestAnimationFrame(raf);
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+    };
+  }, []);
+}
+
+function MagneticField() {
+  const [mouse, setMouse] = useState({ x: 50, y: 50 });
+  const background = useMotionTemplate`radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(20, 184, 166, 0.28), transparent 32%), radial-gradient(circle at ${100 - mouse.x}% ${mouse.y}%, rgba(245, 158, 11, 0.18), transparent 30%)`;
+
+  useEffect(() => {
+    const handleMove = (event: PointerEvent) => {
+      setMouse({
+        x: (event.clientX / window.innerWidth) * 100,
+        y: (event.clientY / window.innerHeight) * 100,
+      });
+    };
+
+    window.addEventListener("pointermove", handleMove);
+    return () => window.removeEventListener("pointermove", handleMove);
+  }, []);
+
+  return (
+    <motion.div
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 z-0 opacity-90"
+      style={{ background }}
+    />
+  );
+}
+
+function Reveal({
+  children,
+  className = "",
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) {
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 38, filter: "blur(12px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, margin: "-90px" }}
+      transition={{ duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function ScrollTheater() {
+  const targetRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start end", "end start"],
+  });
+  const rotate = useTransform(scrollYProgress, [0, 1], [-8, 8]);
+  const y = useTransform(scrollYProgress, [0, 1], [90, -90]);
+  const clip = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    ["polygon(0 10%, 100% 0, 100% 86%, 0 100%)", "polygon(0 0, 100% 8%, 100% 100%, 0 90%)", "polygon(0 8%, 100% 0, 100% 88%, 0 100%)"],
+  );
+
+  return (
+    <section id="work" ref={targetRef} className="relative min-h-[110vh] overflow-hidden bg-[#f7faf7] py-24 text-[#0b1220] sm:py-32">
+      <motion.div
+        className="absolute inset-x-0 top-0 h-28 bg-[#071016]"
+        style={{ clipPath: "polygon(0 0, 100% 0, 100% 26%, 0 100%)" }}
+      />
+      <div className="mx-auto grid w-full max-w-[1180px] gap-10 px-4 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <Reveal className="sticky top-24 hidden lg:block">
+          <p className="font-mono text-xs uppercase text-teal-700">Selected Work</p>
+          <h2 className="mt-5 text-5xl font-semibold leading-[1.04] text-[#0b1220]">
+            Recent systems with visible business shape.
+          </h2>
+          <p className="mt-6 max-w-sm text-base leading-7 text-slate-600">
+            A mix of public GitHub work, local Codex-era projects, and commercial builds from the CV.
+          </p>
+        </Reveal>
+
+        <div className="space-y-5">
+          <Reveal className="lg:hidden">
+            <p className="font-mono text-xs uppercase text-teal-700">Selected Work</p>
+            <h2 className="mt-5 text-4xl font-semibold leading-tight text-[#0b1220]">
+              Recent systems with visible business shape.
+            </h2>
+          </Reveal>
+          {recentProjects.map((project, index) => (
+            <motion.a
+              key={project.name}
+              href={project.href}
+              target="_blank"
+              rel="noreferrer"
+              className="group block border border-[#0b1220]/10 bg-white p-5 shadow-[0_24px_80px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:border-teal-500/60 sm:p-7"
+              style={{ rotate: index % 2 === 0 ? rotate : undefined, y: index % 2 ? y : undefined, clipPath: index === 0 ? clip : undefined }}
+              initial={{ opacity: 0, x: 70 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, delay: index * 0.04 }}
+            >
+              <div className="flex items-start justify-between gap-6">
+                <div>
+                  <p className="font-mono text-xs uppercase text-amber-700">{project.type} / {project.year}</p>
+                  <h3 className="mt-3 text-3xl font-semibold text-[#0b1220]">{project.name}</h3>
+                </div>
+                <ArrowUpRight className="mt-2 h-6 w-6 text-teal-700 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </div>
+              <p className="mt-5 max-w-2xl text-base leading-7 text-slate-600">{project.summary}</p>
+              <p className="mt-6 border-t border-slate-200 pt-4 font-mono text-xs text-slate-500">{project.stack}</p>
+            </motion.a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function PortfolioExperience() {
+  useLenis();
+
+  const container = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 110, damping: 28 });
+
+  const stats = useMemo(
+    () => [
+      ["10+", "years shipping web products"],
+      ["16+", "sites from the CV portfolio"],
+      ["2026", "recent AI and product systems"],
+    ],
+    [],
+  );
+
+  return (
+    <main ref={container} className="relative isolate overflow-hidden bg-[#071016] text-white">
+      <MagneticField />
+      <motion.div className="fixed left-0 top-0 z-50 h-1 origin-left bg-teal-300" style={{ scaleX: progress }} />
+
+      <header className="fixed inset-x-0 top-0 z-40 border-b border-white/10 bg-[#071016]/72 backdrop-blur-xl">
+        <nav className="mx-auto flex h-16 w-full max-w-[1180px] items-center justify-between px-4">
+          <a href="#" className="font-mono text-sm uppercase text-white">ES / 2026</a>
+          <div className="hidden items-center gap-7 md:flex">
+            {navigation.map((item) => (
+              <a key={item} href={`#${item.toLowerCase()}`} className="text-sm text-white/68 transition hover:text-white">
+                {item}
+              </a>
+            ))}
+          </div>
+          <a
+            href="mailto:eric_sangcap_19@yahoo.com"
+            className="inline-flex h-10 items-center gap-2 border border-white/14 px-4 text-sm text-white transition hover:border-teal-300 hover:text-teal-200"
+          >
+            <Mail className="h-4 w-4" />
+            <span className="hidden sm:inline">Start a build</span>
+          </a>
+          <button aria-label="Open navigation" className="grid h-10 w-10 place-items-center border border-white/14 md:hidden">
+            <Menu className="h-5 w-5" />
+          </button>
+        </nav>
+      </header>
+
+      <section className="relative min-h-screen overflow-hidden pt-16">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.04)_1px,transparent_1px)] bg-[size:72px_72px]" />
+        <div className="absolute bottom-0 left-0 h-36 w-full bg-[#f7faf7]" style={{ clipPath: "polygon(0 66%, 100% 15%, 100% 100%, 0 100%)" }} />
+        <div className="relative z-10 mx-auto grid min-h-[calc(100vh-64px)] w-full max-w-[1180px] items-center gap-12 px-4 py-16 lg:grid-cols-[1.02fr_.98fr]">
+          <div className="min-w-0">
+            <h1 className="max-w-4xl text-5xl font-semibold leading-[0.98] text-white sm:text-7xl lg:text-8xl">
+              Eric Sangcap
+            </h1>
+            <p className="mt-8 max-w-[320px] whitespace-normal text-xl leading-8 text-white/82 sm:max-w-2xl sm:text-2xl sm:leading-9">
+              Full-Stack Web Developer building Shopify, WordPress, React, Next.js, and AI Automation systems that turn business ideas into working products.
+            </p>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <a className="inline-flex h-[52px] items-center justify-center gap-2 bg-teal-300 px-6 text-sm font-semibold text-[#071016] transition hover:bg-white" href="/downloads/eric-sangcap-cv.pdf" download>
+                <Download className="h-4 w-4" />
+                Download PDF
+              </a>
+              <a className="inline-flex h-[52px] items-center justify-center gap-2 border border-white/18 px-6 text-sm font-semibold text-white transition hover:border-amber-300 hover:text-amber-200" href="/downloads/eric-sangcap-cv.docx" download>
+                <FileText className="h-4 w-4" />
+                Download DOC
+              </a>
+            </div>
+            <div className="mt-11 grid max-w-2xl grid-cols-1 border-y border-white/12 sm:grid-cols-3">
+              {stats.map(([value, label]) => (
+                <div key={value} className="border-b border-white/12 py-5 pr-4 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
+                  <p className="font-mono text-2xl text-teal-200">{value}</p>
+                  <p className="mt-2 text-xs leading-5 text-white/58">{label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative min-h-[520px] min-w-0">
+            <motion.div
+              className="absolute inset-7 border border-teal-300/35"
+              animate={{ rotate: [0, 2, -1, 0], scale: [1, 1.02, 1] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute right-0 top-14 hidden h-32 w-32 border border-amber-300/70 sm:block lg:-right-8"
+              animate={{ y: [0, 26, 0], rotate: [12, -8, 12] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <div className="absolute bottom-10 left-0 z-20 max-w-[260px] border border-white/16 bg-[#071016]/80 p-4 backdrop-blur">
+              <p className="font-mono text-xs uppercase text-amber-200">Current edge</p>
+              <p className="mt-2 text-sm leading-6 text-white/72">AI assistants, n8n workflows, commerce automation, and high-conversion product interfaces.</p>
+            </div>
+            <div className="relative ml-auto h-[540px] w-full max-w-[500px] overflow-hidden bg-white/8">
+              <Image
+                src="/images/eric-ceo.png"
+                alt="Eric Sangcap portrait"
+                fill
+                priority
+                sizes="(min-width: 1024px) 500px, 90vw"
+                className="object-cover object-top"
+              />
+              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#071016] to-transparent" />
+            </div>
+          </div>
+        </div>
+        <a href="#work" className="absolute bottom-8 left-1/2 z-20 grid h-12 w-12 -translate-x-1/2 place-items-center border border-white/18 text-white/70 transition hover:text-white">
+          <ArrowDown className="h-5 w-5" />
+        </a>
+      </section>
+
+      <ScrollTheater />
+
+      <section id="stack" className="relative overflow-hidden bg-[#071016] py-24 sm:py-32">
+        <div className="mx-auto w-full max-w-[1180px] px-4">
+          <Reveal className="max-w-3xl">
+            <p className="font-mono text-xs uppercase text-teal-200">Stack</p>
+            <h2 className="mt-5 text-4xl font-semibold leading-tight sm:text-6xl">One developer across storefronts, apps, automations, and cloud glue.</h2>
+          </Reveal>
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {skills.map((skill, index) => (
+              <Reveal key={skill.title} delay={index * 0.05} className="border border-white/12 bg-white/[0.035] p-6">
+                <skill.icon className="h-7 w-7 text-amber-200" />
+                <h3 className="mt-8 text-xl font-semibold text-white">{skill.title}</h3>
+                <p className="mt-4 text-sm leading-6 text-white/62">{skill.text}</p>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal className="mt-10 flex flex-wrap gap-3">
+            {websiteWork.map((site) => (
+              <span key={site} className="border border-white/12 px-4 py-2 font-mono text-xs text-white/68">
+                {site}
+              </span>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+      <section id="proof" className="relative bg-[#f7faf7] py-24 text-[#0b1220] sm:py-32">
+        <div className="mx-auto w-full max-w-[1180px] px-4">
+          <Reveal className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <p className="font-mono text-xs uppercase text-amber-700">Client Proof</p>
+              <h2 className="mt-5 max-w-3xl text-4xl font-semibold leading-tight sm:text-6xl">Trusted when the build has to work and keep moving.</h2>
+            </div>
+            <div className="flex items-center gap-3 text-sm text-slate-600">
+              <Phone className="h-4 w-4 text-teal-700" />
+              +639611045475
+            </div>
+          </Reveal>
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            {testimonials.map((item, index) => (
+              <Reveal key={item.name} delay={index * 0.06} className="bg-white p-7 shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
+                <Quote className="h-7 w-7 text-teal-700" />
+                <p className="mt-8 text-xl leading-8 text-slate-800">{item.quote}</p>
+                <p className="mt-8 font-semibold text-[#0b1220]">{item.name}</p>
+                <p className="mt-1 text-sm text-slate-500">{item.role}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="timeline" className="relative overflow-hidden bg-[#071016] py-24 sm:py-32">
+        <div className="absolute inset-y-0 left-1/2 hidden w-px bg-white/12 lg:block" />
+        <div className="mx-auto w-full max-w-[1180px] px-4">
+          <Reveal className="max-w-3xl">
+            <p className="font-mono text-xs uppercase text-teal-200">Timeline</p>
+            <h2 className="mt-5 text-4xl font-semibold leading-tight sm:text-6xl">From enterprise web systems to fast-moving AI-enabled products.</h2>
+          </Reveal>
+          <div className="mt-14 space-y-4">
+            {timeline.map(([year, title, detail], index) => (
+              <Reveal key={year} delay={index * 0.04}>
+                <div className="grid gap-4 border border-white/12 bg-white/[0.035] p-5 md:grid-cols-[160px_1fr] md:items-center">
+                  <p className="font-mono text-2xl text-amber-200">{year}</p>
+                  <div>
+                    <h3 className="text-2xl font-semibold text-white">{title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-white/62">{detail}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="relative overflow-hidden bg-teal-300 py-24 text-[#071016] sm:py-32">
+        <motion.div
+          aria-hidden="true"
+          className="absolute inset-8 border border-[#071016]/18"
+          animate={{ clipPath: ["polygon(0 0, 100% 8%, 96% 100%, 4% 92%)", "polygon(3% 10%, 96% 0, 100% 91%, 0 100%)", "polygon(0 0, 100% 8%, 96% 100%, 4% 92%)"] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <div className="relative mx-auto grid w-full max-w-[1180px] gap-10 px-4 lg:grid-cols-[1fr_.7fr] lg:items-end">
+          <Reveal>
+            <h2 className="text-5xl font-semibold leading-[1.02] sm:text-7xl">Let&apos;s build the next one.</h2>
+            <p className="mt-8 max-w-2xl text-xl leading-8 text-[#071016]/72">
+              Available for full-stack web builds, Shopify and WordPress systems, AI automation, React product demos, and high-conversion client work.
+            </p>
+          </Reveal>
+          <Reveal delay={0.1} className="space-y-3">
+            <a href="mailto:eric_sangcap_19@yahoo.com" className="flex items-center justify-between border border-[#071016]/20 bg-[#071016] px-5 py-4 text-white transition hover:bg-white hover:text-[#071016]">
+              <span className="inline-flex items-center gap-3"><Mail className="h-5 w-5" /> eric_sangcap_19@yahoo.com</span>
+              <ArrowUpRight className="h-5 w-5" />
+            </a>
+            <a href="https://github.com/esangcap" target="_blank" rel="noreferrer" className="flex items-center justify-between border border-[#071016]/20 bg-white px-5 py-4 text-[#071016] transition hover:bg-[#071016] hover:text-white">
+              <span className="inline-flex items-center gap-3"><GitBranch className="h-5 w-5" /> github.com/esangcap</span>
+              <ArrowUpRight className="h-5 w-5" />
+            </a>
+            <a href="#work" className="flex items-center justify-between border border-[#071016]/20 bg-white/50 px-5 py-4 text-[#071016] transition hover:bg-white">
+              <span className="inline-flex items-center gap-3"><Workflow className="h-5 w-5" /> Review selected systems</span>
+              <Sparkles className="h-5 w-5" />
+            </a>
+          </Reveal>
+        </div>
+      </section>
+
+      <footer className="border-t border-white/10 bg-[#071016] py-8">
+        <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-3 px-4 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between">
+          <p>Eric Sangcap / Full-Stack Web Developer</p>
+          <p>Next.js, Tailwind CSS, motion, Lenis</p>
+        </div>
+      </footer>
+    </main>
+  );
+}
