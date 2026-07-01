@@ -48,13 +48,13 @@ const recentProjects = [
       "Built a polished workforce intelligence prototype with employee profiles, compliance, skills, reporting, and an AI HR assistant for client demos.",
   },
   {
-    name: "ES Automations",
-    type: "n8n workflow systems",
+    name: "Panadero UAE",
+    type: "Multi-branch bakery system",
     year: "2026",
-    href: "https://github.com/esangcap/esweb-n8n",
-    stack: "n8n, WhatsApp automation, AI agents",
+    href: "https://github.com/esangcap/Panaderomultibranchesuae",
+    stack: "React, TypeScript, Supabase Auth, Edge Functions, Vite",
     summary:
-      "Maintained automation workflows and WhatsApp AI agent testing infrastructure for repeatable client automation delivery.",
+      "Built a branch-aware bakery management platform with staff login, POS, order creation, kitchen workflow, inventory, recipes, alerts, transfers, and admin tooling.",
   },
   {
     name: "Teamio",
@@ -66,13 +66,13 @@ const recentProjects = [
       "Implemented a marketing experience from a Figma code bundle with ROI storytelling, video assets, and responsive product sections.",
   },
   {
-    name: "MyInvoicer",
-    type: "Desktop finance app",
+    name: "DyluxMerge",
+    type: "Shopify theme merge",
     year: "2026",
-    href: "https://github.com/esangcap/MyInvoicer",
-    stack: "Electron, React 19, Supabase, Recharts, jsPDF",
+    href: "https://github.com/esangcap/dylux_merge",
+    stack: "Shopify Liquid, theme merge, storefront QA",
     summary:
-      "Built an invoice and project finance desktop app with reporting, PDF generation, and standardized interface polish.",
+      "Managed a Shopify theme merge workflow around an updated Xclusive theme, consolidating storefront changes while preserving production theme behavior.",
   },
   {
     name: "QR Order",
@@ -84,13 +84,22 @@ const recentProjects = [
       "Created a QR ordering product for restaurants, extending the React application experience behind qrorder.pro.",
   },
   {
-    name: "lyricsApp",
-    type: "Public GitHub project",
-    year: "2025",
-    href: "https://github.com/esangcap/lyricsApp",
-    stack: "JavaScript, React",
+    name: "FourEditors 2026",
+    type: "Shopify theme engineering",
+    year: "2026",
+    href: "https://github.com/esangcap/FourEditors_060226",
+    stack: "Shopify Liquid, snippets, conversion UX, tracking hygiene",
     summary:
-      "Public repository for a vocalist-focused lyric picker, listed as the most recently updated public repo on GitHub.",
+      "Maintained a custom Shopify theme with specialized Liquid snippets, product/course sections, checkout integrations, and URL sanitization for cleaner tracking.",
+  },
+  {
+    name: "PremierCE Theme",
+    type: "Shopify theme repository",
+    year: "2026",
+    href: "https://github.com/esangcap/premierce_shopify",
+    stack: "Shopify Liquid, storefront theme, VS Code workflow",
+    summary:
+      "Managed the PremierCE Shopify theme locally with a versioned repository workflow for storefront customization and maintainable theme updates.",
   },
 ];
 
@@ -127,7 +136,7 @@ const testimonials = [
 ];
 
 const timeline = [
-  ["2026", "Recent product systems", "PeopleLens AU, ES Automations, Teamio, MyInvoicer, Neuftech PH, and QR Order."],
+  ["2026", "Recent product systems", "PeopleLens AU, Panadero UAE, Teamio, DyluxMerge, FourEditors 2026, PremierCE Theme, and QR Order."],
   ["2025", "Shopify project delivery", "utilise social, AVAMIA, DAM Health, Dr. Franks, Uniquely Lola James, and Screen Shaver."],
   ["2024", "Membership commerce", "slideshop.com rebuild with paid-member template download restrictions."],
   ["2022-2024", "Lead Shopify developer", "getboomba.com conversion features, theme customization, and stakeholder delivery."],
@@ -361,14 +370,14 @@ export function PortfolioExperience() {
               <p className="font-mono text-xs uppercase text-amber-200">Current edge</p>
               <p className="mt-2 text-sm leading-6 text-white/72">AI assistants, n8n workflows, commerce automation, and high-conversion product interfaces.</p>
             </div>
-            <div className="relative ml-auto h-[540px] w-full max-w-[500px] overflow-hidden bg-white/8">
+            <div className="relative ml-auto h-[540px] w-full max-w-[500px] overflow-visible">
               <Image
-                src="/images/eric-ceo.png"
+                src="/images/eric-ceo-cutout.png"
                 alt="Eric Sangcap portrait"
                 fill
                 priority
                 sizes="(min-width: 1024px) 500px, 90vw"
-                className="object-cover object-top"
+                className="object-contain object-bottom drop-shadow-[0_32px_80px_rgba(0,0,0,0.65)]"
               />
               <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#071016] to-transparent" />
             </div>
