@@ -148,18 +148,21 @@ const testimonials = [
       "Eric is a developer you can trust. Thinks along, can communicate well and quickly and is also very skilled.",
     name: "Tim",
     role: "CEO, Four Editors",
+    image: "/proof/tim-foureditors.png",
   },
   {
     quote:
       "Very professional and highly skilled at his craft. I will try to work with him again for any needs in the future.",
     name: "Matt Gramer",
     role: "CEO, Kentucky Counseling Center",
+    image: "/proof/MattG.png",
   },
   {
     quote:
       "The end product exceeds my expectations. Excellent work and very professional.",
     name: "Alex Blastique",
     role: "Operations Manager, Neuftech",
+    image: "/proof/axelb.jpg",
   },
 ];
 
@@ -563,11 +566,11 @@ export function PortfolioExperience() {
             </p>
           </Reveal>
 
-          <div className="mt-14 grid gap-5 lg:grid-cols-3">
+          <div className="mt-14 grid items-stretch gap-5 lg:grid-cols-3">
             {testimonials.map((item, index) => (
               <motion.article
                 key={item.name}
-                className="group relative min-h-80 overflow-hidden border border-white/12 bg-white/[0.035] p-px shadow-[0_30px_100px_rgba(0,0,0,0.28)]"
+                className="group relative h-full min-h-80 overflow-hidden border border-white/12 bg-white/[0.035] p-px shadow-[0_30px_100px_rgba(0,0,0,0.28)]"
                 initial={{ opacity: 0, y: 46, rotateX: 12 }}
                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 viewport={{ once: true, amount: 0.34 }}
@@ -581,12 +584,17 @@ export function PortfolioExperience() {
                 />
                 <span className="absolute inset-px bg-[#0b141b]/96" />
                 <span className="absolute inset-px bg-[radial-gradient(circle_at_20%_0%,rgba(45,212,191,.18),transparent_36%),radial-gradient(circle_at_92%_96%,rgba(251,191,36,.14),transparent_34%)] opacity-70 transition group-hover:opacity-100" />
-                <span className="relative z-10 flex min-h-80 flex-col p-7 sm:p-8">
-                  <span className="flex items-center justify-between">
-                    <Quote className="h-8 w-8 text-teal-200" />
-                    <span className="font-mono text-xs uppercase text-white/38">0{index + 1}</span>
+                <span className="relative z-10 flex h-full min-h-80 flex-col p-7 sm:p-8">
+                  <span className="flex items-start justify-between gap-5">
+                    <span className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full border border-white/16 bg-white/8 shadow-[0_0_34px_rgba(45,212,191,0.18)]">
+                      <Image src={item.image} alt={item.name} fill sizes="80px" className="object-cover transition duration-700 group-hover:scale-110" />
+                    </span>
+                    <span className="flex flex-col items-end gap-4">
+                      <span className="font-mono text-xs uppercase text-white/38">0{index + 1}</span>
+                      <Quote className="h-8 w-8 text-teal-200" />
+                    </span>
                   </span>
-                  <span className="mt-10 block text-xl leading-8 text-white/84">{item.quote}</span>
+                  <span className="mt-9 block text-xl leading-8 text-white/84">{item.quote}</span>
                   <span className="mt-auto block pt-10">
                     <span className="block h-px w-full bg-white/12" />
                     <span className="mt-5 flex items-end justify-between gap-4">
