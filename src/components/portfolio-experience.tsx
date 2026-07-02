@@ -450,9 +450,9 @@ export function PortfolioExperience() {
               <p className="font-mono text-xs uppercase text-amber-200">Current edge</p>
               <p className="mt-2 text-sm leading-6 text-white/72">Full Stack Engineer and AI automation specialist</p>
             </div>
-            <div className="relative ml-auto h-[540px] w-full max-w-[500px] overflow-visible">
+            <div className="relative ml-auto h-[620px] w-full max-w-[540px] overflow-visible">
               <Image
-                src="/images/eric-ceo-cutout.png"
+                src="/images/main-es-hero.png"
                 alt="Eric Sangcap portrait"
                 fill
                 priority
