@@ -57,7 +57,7 @@ const recentProjects = [
       "Built a branch-aware bakery management platform with staff login, POS, order creation, kitchen workflow, inventory, recipes, alerts, transfers, and admin tooling.",
   },
   {
-    name: "Teamio",
+    name: "Teamio, NL",
     type: "Product website prototype",
     year: "2026",
     href: "https://teamiosupport.io",
@@ -75,7 +75,7 @@ const recentProjects = [
       "Managed a Shopify theme merge workflow around an updated Xclusive theme, consolidating storefront changes while preserving production theme behavior.",
   },
   {
-    name: "QR Order",
+    name: "QR Order, US",
     type: "Restaurant ordering system",
     year: "2026",
     href: "https://qrorder.pro",
@@ -84,7 +84,7 @@ const recentProjects = [
       "Created a QR ordering product for restaurants, extending the React application experience behind qrorder.pro.",
   },
   {
-    name: "FourEditors 2026",
+    name: "Foureditors.com, NL",
     type: "Shopify theme engineering",
     year: "2026",
     href: "https://foureditors.com",
@@ -93,7 +93,7 @@ const recentProjects = [
       "Maintained a custom Shopify theme with specialized Liquid snippets, product/course sections, checkout integrations, and URL sanitization for cleaner tracking.",
   },
   {
-    name: "PremierCE Theme",
+    name: "Premier Concrete Equipment, AU",
     type: "Shopify theme repository",
     year: "2026",
     href: "https://premierce.com.au",
