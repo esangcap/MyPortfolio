@@ -39,16 +39,17 @@ const skills = [
 ];
 
 const techStackLogos = [
-  { name: "Shopify", mark: "S", color: "#95bf47", x: "-214px", y: "-144px", delay: "0ms" },
-  { name: "React", mark: "⚛", color: "#61dafb", x: "-86px", y: "-202px", delay: "35ms" },
-  { name: "Next JS", mark: "N", color: "#ffffff", x: "72px", y: "-206px", delay: "70ms" },
-  { name: "JavaScript", mark: "JS", color: "#f7df1e", x: "202px", y: "-126px", delay: "105ms" },
-  { name: "Tailwind", mark: "TW", color: "#38bdf8", x: "232px", y: "18px", delay: "140ms" },
+  { name: "Shopify", src: "/shopify.svg", mark: "S", color: "#95bf47", x: "-214px", y: "-144px", delay: "0ms" },
+  { name: "React", src: "/React.svg", mark: "R", color: "#61dafb", x: "-135px", y: "-210px", delay: "35ms" },
+  { name: "Next JS", src: "/next-js.svg", mark: "N", color: "#ffffff", surface: "light", x: "72px", y: "-206px", delay: "70ms" },
+  { name: "JavaScript", src: "/javascript-1.svg", mark: "JS", color: "#f7df1e", x: "202px", y: "-126px", delay: "105ms" },
+  { name: "Tailwind", src: "/tailwind-css-2.svg", mark: "TW", color: "#38bdf8", x: "232px", y: "18px", delay: "140ms" },
   { name: "CSS", mark: "CSS", color: "#264de4", x: "158px", y: "154px", delay: "175ms" },
   { name: "Supabase", mark: "SB", color: "#3ecf8e", x: "18px", y: "222px", delay: "210ms" },
   { name: "Postgres", mark: "PG", color: "#336791", x: "-130px", y: "178px", delay: "245ms" },
-  { name: "VS Code", mark: "</>", color: "#007acc", x: "-236px", y: "52px", delay: "280ms" },
-  { name: "Node JS", mark: "⬢", color: "#83cd29", x: "-260px", y: "-58px", delay: "315ms" },
+  { name: "Claude", src: "/claude-logo.svg", mark: "CL", color: "#d97757", x: "-58px", y: "226px", delay: "262ms" },
+  { name: "OpenAI", src: "/openai-2.svg", mark: "AI", color: "#ffffff", surface: "light", x: "-236px", y: "52px", delay: "280ms" },
+  { name: "Node JS", src: "/nodejs-3.svg", mark: "ND", color: "#83cd29", x: "-260px", y: "-58px", delay: "315ms" },
 ];
 
 const recentProjects = [
@@ -468,7 +469,7 @@ export function PortfolioExperience() {
                 {techStackLogos.map((logo) => (
                   <span
                     key={logo.name}
-                    className="tech-burst-logo absolute left-1/2 top-1/2 grid h-16 w-16 place-items-center rounded-full border border-white/10 bg-[#071016]/90 opacity-0 backdrop-blur-xl sm:h-18 sm:w-18"
+                    className={`tech-burst-logo absolute left-1/2 top-1/2 grid h-16 w-16 place-items-center rounded-full border opacity-0 backdrop-blur-xl sm:h-18 sm:w-18 ${logo.surface === "light" ? "border-white/80 bg-white shadow-[0_0_32px_rgba(255,255,255,0.45)]" : "border-white/10 bg-[#071016]/90"}`}
                     style={{
                       "--logo-x": logo.x,
                       "--logo-y": logo.y,
@@ -476,9 +477,13 @@ export function PortfolioExperience() {
                       "--logo-color": logo.color,
                     } as CSSProperties & Record<"--logo-x" | "--logo-y" | "--logo-delay" | "--logo-color", string>}
                   >
-                    <span className="text-center font-mono text-[11px] font-semibold leading-none tracking-tight" style={{ color: logo.color }}>
-                      {logo.mark}
-                    </span>
+                    {logo.src ? (
+                      <Image src={logo.src} alt={logo.name} width={38} height={38} unoptimized className={`h-9 w-9 object-contain sm:h-10 sm:w-10 ${logo.surface === "light" ? "scale-110" : ""}`} />
+                    ) : (
+                      <span className="text-center font-mono text-[11px] font-semibold leading-none tracking-tight" style={{ color: logo.color }}>
+                        {logo.mark}
+                      </span>
+                    )}
                     <span className="absolute -bottom-6 whitespace-nowrap font-mono text-[10px] uppercase text-white/0 transition group-hover:text-white/62 group-focus-within:text-white/62">
                       {logo.name}
                     </span>
