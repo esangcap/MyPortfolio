@@ -146,22 +146,22 @@ const testimonials = [
   {
     quote:
       "Eric is a developer you can trust. Thinks along, can communicate well and quickly and is also very skilled.",
-    name: "Tim",
-    role: "CEO, Four Editors",
+    name: "Tim Richters",
+    role: "CEO, Four Editors NL",
     image: "/proof/tim-foureditors.png",
   },
   {
     quote:
       "Very professional and highly skilled at his craft. I will try to work with him again for any needs in the future.",
     name: "Matt Gramer",
-    role: "CEO, Kentucky Counseling Center",
+    role: "CEO, Kentucky Counseling Center US",
     image: "/proof/MattG.png",
   },
   {
     quote:
       "The end product exceeds my expectations. Excellent work and very professional.",
     name: "Alex Blastique",
-    role: "Operations Manager, Neuftech",
+    role: "Operations Manager, Neuftech PH",
     image: "/proof/axelb.jpg",
   },
   {
@@ -169,14 +169,21 @@ const testimonials = [
       "Very very happy with Eric. He did AI automation for our Email support and it works perfect! He is very reliable, quick in response and works hard. I 110% recommend him!",
     name: "Daniel Schouten",
     role: "CEO, SR Technology BV",
-    image: "/proof/daniel_schouten.jpg",
+    image: "/proof/daniel_schouten.jpeg",
   },
   {
     quote:
       "Eric did a great job developing my website for me and I was extremely impressed with the results. He clearly has a passion for what he does, and it shows in his work.",
     name: "Travis Holvey",
-    role: "CEO, SweetDreamz & Kalposi AU",
-    image: "/proof/travis_holvey.jpg",
+    role: "CEO, SweetDreamz & Kalopsi AU",
+    image: "/proof/travis-holvey.png",
+  },
+  {
+    quote:
+      "I would highly recommend Eric to anyone looking for a reliable and capable web developer who takes pride in his work.",
+    name: "Christopher S. Keen",
+    role: "CEO, Premier Concrete Equipment AU",
+    image: "/proof/ChrisKeen.jpeg",
   },
 ];
 
@@ -573,7 +580,7 @@ export function PortfolioExperience() {
             <div>
               <p className="font-mono text-xs uppercase text-teal-200">Client Proof</p>
               <div className="mt-4 h-px w-16 bg-teal-300" />
-              <h2 className="mt-8 max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-6xl">Results people can feel after the system goes live.</h2>
+              <h2 className="mt-8 max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-6xl">Systems that earn trust when real teams start using them.</h2>
             </div>
             <p className="max-w-xl text-base leading-7 text-white/62 lg:pb-2">
               The proof is in calmer launches, clearer workflows, and clients who can keep moving because the product behaves like part of the business.
