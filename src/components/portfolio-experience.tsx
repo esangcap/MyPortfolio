@@ -13,7 +13,6 @@ import {
   Mail,
   Menu,
   PanelsTopLeft,
-  Phone,
   Quote,
   Sparkles,
   Workflow,
@@ -39,17 +38,14 @@ const skills = [
 ];
 
 const techStackLogos = [
-  { name: "Shopify", src: "/shopify.svg", mark: "S", color: "#95bf47", x: "-214px", y: "-144px", delay: "0ms" },
-  { name: "React", src: "/React.svg", mark: "R", color: "#61dafb", x: "-135px", y: "-210px", delay: "35ms" },
-  { name: "Next JS", src: "/next-js.svg", mark: "N", color: "#ffffff", surface: "light", x: "72px", y: "-206px", delay: "70ms" },
-  { name: "JavaScript", src: "/javascript-1.svg", mark: "JS", color: "#f7df1e", x: "202px", y: "-126px", delay: "105ms" },
-  { name: "Tailwind", src: "/tailwind-css-2.svg", mark: "TW", color: "#38bdf8", x: "232px", y: "18px", delay: "140ms" },
-  { name: "CSS", mark: "CSS", color: "#264de4", x: "158px", y: "154px", delay: "175ms" },
-  { name: "Supabase", mark: "SB", color: "#3ecf8e", x: "18px", y: "222px", delay: "210ms" },
-  { name: "Postgres", mark: "PG", color: "#336791", x: "-130px", y: "178px", delay: "245ms" },
-  { name: "Claude", src: "/claude-logo.svg", mark: "CL", color: "#d97757", x: "-58px", y: "226px", delay: "262ms" },
-  { name: "OpenAI", src: "/openai-2.svg", mark: "AI", color: "#ffffff", surface: "light", x: "-236px", y: "52px", delay: "280ms" },
-  { name: "Node JS", src: "/nodejs-3.svg", mark: "ND", color: "#83cd29", x: "-260px", y: "-58px", delay: "315ms" },
+  { name: "React", src: "/React.svg", mark: "R", color: "#61dafb", x: "-176px", y: "-206px", delay: "0ms" },
+  { name: "Shopify", src: "/shopify.svg", mark: "S", color: "#95bf47", x: "-250px", y: "-116px", delay: "40ms" },
+  { name: "Node JS", src: "/nodejs-3.svg", mark: "ND", color: "#83cd29", x: "-276px", y: "12px", delay: "80ms" },
+  { name: "OpenAI", src: "/openai-2.svg", mark: "AI", color: "#ffffff", surface: "light", x: "-244px", y: "142px", delay: "120ms" },
+  { name: "Next JS", src: "/next-js.svg", mark: "N", color: "#ffffff", surface: "light", x: "126px", y: "-198px", delay: "160ms" },
+  { name: "JavaScript", src: "/javascript-1.svg", mark: "JS", color: "#f7df1e", x: "260px", y: "-110px", delay: "200ms" },
+  { name: "Tailwind", src: "/tailwind-css-2.svg", mark: "TW", color: "#38bdf8", x: "254px", y: "42px", delay: "240ms" },
+  { name: "Claude", src: "/claude-logo.svg", mark: "CL", color: "#d97757", x: "204px", y: "174px", delay: "280ms" },
 ];
 
 const recentProjects = [
@@ -423,7 +419,7 @@ export function PortfolioExperience() {
         <div className="absolute bottom-0 left-0 h-36 w-full bg-[#071016]" style={{ clipPath: "polygon(0 66%, 100% 15%, 100% 100%, 0 100%)" }} />
         <div className="relative z-10 mx-auto grid min-h-[calc(100vh-64px)] w-full max-w-295 items-center gap-12 px-4 py-16 lg:grid-cols-[1.02fr_.98fr]">
           <div className="min-w-0">
-            <h1 className="max-w-4xl text-5xl font-semibold leading-[0.98] text-white sm:text-7xl lg:text-8xl">
+            <h1 className="hero-gradient-name max-w-4xl pb-2 text-5xl font-semibold leading-[1.08] sm:text-7xl lg:text-8xl">
               Eric Sangcap
             </h1>
             <p className="mt-8 max-w-80 whitespace-normal text-xl leading-8 text-white/82 sm:max-w-2xl sm:text-2xl sm:leading-9">
@@ -534,26 +530,75 @@ export function PortfolioExperience() {
         </div>
       </section>
 
-      <section id="proof" className="relative bg-[#f7faf7] py-24 text-[#0b1220] sm:py-32">
-        <div className="mx-auto w-full max-w-295 px-4">
-          <Reveal className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+      <section id="proof" className="relative isolate overflow-hidden bg-[#071016] py-24 text-white sm:py-32">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.04)_1px,transparent_1px)] bg-size-[72px_72px]" />
+        <motion.div
+          aria-hidden="true"
+          className="absolute left-1/2 top-10 h-96 w-96 -translate-x-1/2 rounded-full border border-teal-300/20"
+          animate={{ rotate: [0, 8, -6, 0], scale: [1, 1.08, 0.98, 1] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          aria-hidden="true"
+          className="absolute -right-28 bottom-20 h-72 w-72 rounded-full bg-teal-300/12 blur-3xl"
+          animate={{ x: [0, -38, 0], y: [0, 24, 0], opacity: [0.45, 0.9, 0.45] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          aria-hidden="true"
+          className="absolute -left-20 top-36 h-64 w-64 rounded-full bg-amber-300/10 blur-3xl"
+          animate={{ x: [0, 32, 0], y: [0, -18, 0], opacity: [0.35, 0.75, 0.35] }}
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        />
+
+        <div className="relative mx-auto w-full max-w-295 px-4">
+          <Reveal className="grid gap-8 lg:grid-cols-[0.92fr_0.58fr] lg:items-end">
             <div>
-              <p className="font-mono text-xs uppercase text-amber-700">Client Proof</p>
-              <h2 className="mt-5 max-w-3xl text-4xl font-semibold leading-tight sm:text-6xl">Trusted when the build has to work and keep moving.</h2>
+              <p className="font-mono text-xs uppercase text-teal-200">Client Proof</p>
+              <div className="mt-4 h-px w-16 bg-teal-300" />
+              <h2 className="mt-8 max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-6xl">Results people can feel after the system goes live.</h2>
             </div>
-            <div className="flex items-center gap-3 text-sm text-slate-600">
-              <Phone className="h-4 w-4 text-teal-700" />
-              +639611045475
-            </div>
+            <p className="max-w-xl text-base leading-7 text-white/62 lg:pb-2">
+              The proof is in calmer launches, clearer workflows, and clients who can keep moving because the product behaves like part of the business.
+            </p>
           </Reveal>
-          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+
+          <div className="mt-14 grid gap-5 lg:grid-cols-3">
             {testimonials.map((item, index) => (
-              <Reveal key={item.name} delay={index * 0.06} className="bg-white p-7 shadow-[0_24px_70px_rgba(15,23,42,0.08)]">
-                <Quote className="h-7 w-7 text-teal-700" />
-                <p className="mt-8 text-xl leading-8 text-slate-800">{item.quote}</p>
-                <p className="mt-8 font-semibold text-[#0b1220]">{item.name}</p>
-                <p className="mt-1 text-sm text-slate-500">{item.role}</p>
-              </Reveal>
+              <motion.article
+                key={item.name}
+                className="group relative min-h-80 overflow-hidden border border-white/12 bg-white/[0.035] p-px shadow-[0_30px_100px_rgba(0,0,0,0.28)]"
+                initial={{ opacity: 0, y: 46, rotateX: 12 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, amount: 0.34 }}
+                transition={{ duration: 0.72, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -10, scale: 1.015 }}
+              >
+                <span
+                  aria-hidden="true"
+                  className="absolute -inset-32 opacity-0 transition duration-700 group-hover:animate-spin group-hover:opacity-100"
+                  style={{ background: index % 2 === 0 ? "conic-gradient(from 180deg, transparent, rgba(45,212,191,.9), transparent, rgba(251,191,36,.8), transparent)" : "conic-gradient(from 90deg, transparent, rgba(251,191,36,.85), transparent, rgba(45,212,191,.75), transparent)" }}
+                />
+                <span className="absolute inset-px bg-[#0b141b]/96" />
+                <span className="absolute inset-px bg-[radial-gradient(circle_at_20%_0%,rgba(45,212,191,.18),transparent_36%),radial-gradient(circle_at_92%_96%,rgba(251,191,36,.14),transparent_34%)] opacity-70 transition group-hover:opacity-100" />
+                <span className="relative z-10 flex min-h-80 flex-col p-7 sm:p-8">
+                  <span className="flex items-center justify-between">
+                    <Quote className="h-8 w-8 text-teal-200" />
+                    <span className="font-mono text-xs uppercase text-white/38">0{index + 1}</span>
+                  </span>
+                  <span className="mt-10 block text-xl leading-8 text-white/84">{item.quote}</span>
+                  <span className="mt-auto block pt-10">
+                    <span className="block h-px w-full bg-white/12" />
+                    <span className="mt-5 flex items-end justify-between gap-4">
+                      <span>
+                        <span className="block font-semibold text-white">{item.name}</span>
+                        <span className="mt-1 block text-sm text-white/50">{item.role}</span>
+                      </span>
+                      <Sparkles className="h-5 w-5 text-amber-200 opacity-60 transition group-hover:rotate-12 group-hover:opacity-100" />
+                    </span>
+                  </span>
+                </span>
+              </motion.article>
             ))}
           </div>
         </div>
