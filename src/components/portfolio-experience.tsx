@@ -671,8 +671,8 @@ export function PortfolioExperience() {
             </p>
           </Reveal>
           <Reveal delay={0.1} className="space-y-3">
-            <a href="mailto:eric_sangcap_19@yahoo.com" className="flex items-center justify-between border border-[#071016]/20 bg-[#071016] px-5 py-4 text-white transition hover:bg-white hover:text-[#071016]">
-              <span className="inline-flex items-center gap-3"><Mail className="h-5 w-5" /> eric_sangcap_19@yahoo.com</span>
+            <a href="mailto:eric@eswebsolutions.com" className="flex items-center justify-between border border-[#071016]/20 bg-[#071016] px-5 py-4 text-white transition hover:bg-white hover:text-[#071016]">
+              <span className="inline-flex items-center gap-3"><Mail className="h-5 w-5" /> eric@eswebsolutions.com</span>
               <ArrowUpRight className="h-5 w-5" />
             </a>
             <a href="https://github.com/esangcap" target="_blank" rel="noreferrer" className="flex items-center justify-between border border-[#071016]/20 bg-white px-5 py-4 text-[#071016] transition hover:bg-[#071016] hover:text-white">
