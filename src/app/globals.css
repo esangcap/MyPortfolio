@@ -49,3 +49,22 @@ button {
     transition-duration: 0.01ms !important;
   }
 }
+
+.tech-burst-logo {
+  transform: translate(-50%, -50%) scale(0.34) rotate(-18deg);
+  transition:
+    transform 720ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 360ms ease,
+    border-color 360ms ease,
+    box-shadow 360ms ease;
+  transition-delay: var(--logo-delay);
+}
+
+.group:hover .tech-burst-logo,
+.group:focus-within .tech-burst-logo {
+  opacity: 1;
+  transform: translate(calc(-50% + var(--logo-x)), calc(-50% + var(--logo-y))) scale(1) rotate(0deg);
+  border-color: color-mix(in srgb, var(--logo-color) 82%, white 18%);
+  box-shadow: 0 0 26px color-mix(in srgb, var(--logo-color) 45%, transparent), inset 0 0 20px rgba(255, 255, 255, 0.06);
+}
+

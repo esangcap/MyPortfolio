@@ -27,7 +27,7 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { type CSSProperties, useEffect, useMemo, useRef, useState } from "react";
 
 const navigation = ["Work", "Stack", "Proof", "Timeline", "Contact"];
 
@@ -36,6 +36,19 @@ const skills = [
   { icon: PanelsTopLeft, title: "Commerce craft", text: "Shopify Liquid, WordPress, WooCommerce, conversion UX, custom calculators, and theme systems." },
   { icon: Bot, title: "AI automation", text: "n8n workflows, AI assistants, operational automations, and client-facing demos." },
   { icon: Cloud, title: "Cloud delivery", text: "AWS API Gateway, Lambda, S3, EC2, Google Cloud Functions, BigQuery, and Cloud Storage." },
+];
+
+const techStackLogos = [
+  { name: "Shopify", mark: "S", color: "#95bf47", x: "-214px", y: "-144px", delay: "0ms" },
+  { name: "React", mark: "⚛", color: "#61dafb", x: "-86px", y: "-202px", delay: "35ms" },
+  { name: "Next JS", mark: "N", color: "#ffffff", x: "72px", y: "-206px", delay: "70ms" },
+  { name: "JavaScript", mark: "JS", color: "#f7df1e", x: "202px", y: "-126px", delay: "105ms" },
+  { name: "Tailwind", mark: "TW", color: "#38bdf8", x: "232px", y: "18px", delay: "140ms" },
+  { name: "CSS", mark: "CSS", color: "#264de4", x: "158px", y: "154px", delay: "175ms" },
+  { name: "Supabase", mark: "SB", color: "#3ecf8e", x: "18px", y: "222px", delay: "210ms" },
+  { name: "Postgres", mark: "PG", color: "#336791", x: "-130px", y: "178px", delay: "245ms" },
+  { name: "VS Code", mark: "</>", color: "#007acc", x: "-236px", y: "52px", delay: "280ms" },
+  { name: "Node JS", mark: "⬢", color: "#83cd29", x: "-260px", y: "-58px", delay: "315ms" },
 ];
 
 const recentProjects = [
@@ -450,16 +463,37 @@ export function PortfolioExperience() {
               <p className="font-mono text-xs uppercase text-amber-200">Current edge</p>
               <p className="mt-2 text-sm leading-6 text-white/72">Full Stack Engineer and AI automation specialist</p>
             </div>
-            <div className="relative ml-auto h-[620px] w-full max-w-[540px] overflow-visible">
+            <div className="group relative ml-auto h-[620px] w-full max-w-[540px] overflow-visible outline-none" tabIndex={0} aria-label="Eric Sangcap tech stack portrait interaction">
+              <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-2 w-2 -translate-x-1/2 -translate-y-1/2">
+                {techStackLogos.map((logo) => (
+                  <span
+                    key={logo.name}
+                    className="tech-burst-logo absolute left-1/2 top-1/2 grid h-16 w-16 place-items-center rounded-full border border-white/10 bg-[#071016]/90 opacity-0 backdrop-blur-xl sm:h-[72px] sm:w-[72px]"
+                    style={{
+                      "--logo-x": logo.x,
+                      "--logo-y": logo.y,
+                      "--logo-delay": logo.delay,
+                      "--logo-color": logo.color,
+                    } as CSSProperties & Record<"--logo-x" | "--logo-y" | "--logo-delay" | "--logo-color", string>}
+                  >
+                    <span className="text-center font-mono text-[11px] font-semibold leading-none tracking-tight" style={{ color: logo.color }}>
+                      {logo.mark}
+                    </span>
+                    <span className="absolute -bottom-6 whitespace-nowrap font-mono text-[10px] uppercase text-white/0 transition group-hover:text-white/62 group-focus-within:text-white/62">
+                      {logo.name}
+                    </span>
+                  </span>
+                ))}
+              </div>
               <Image
                 src="/images/main-es-hero.png"
                 alt="Eric Sangcap portrait"
                 fill
                 priority
                 sizes="(min-width: 1024px) 500px, 90vw"
-                className="object-contain object-bottom drop-shadow-[0_32px_80px_rgba(0,0,0,0.65)]"
+                className="relative z-10 object-contain object-bottom drop-shadow-[0_32px_80px_rgba(0,0,0,0.65)] transition duration-700 group-hover:scale-[1.025] group-focus-within:scale-[1.025]"
               />
-              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#071016] to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 z-20 h-32 bg-gradient-to-t from-[#071016] to-transparent" />
             </div>
           </div>
         </div>
