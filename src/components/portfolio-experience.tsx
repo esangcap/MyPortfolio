@@ -17,6 +17,7 @@ import {
   Quote,
   Sparkles,
   Workflow,
+  type LucideIcon,
 } from "lucide-react";
 import Lenis from "lenis";
 import {
@@ -111,6 +112,13 @@ const projectThemes = [
   { bg: "#f1f5f9", border: "#64748b", line: "#cbd5e1", accent: "#334155" },
   { bg: "#fff1f2", border: "#fb7185", line: "#fecdd3", accent: "#be123c" },
   { bg: "#ecfccb", border: "#84cc16", line: "#d9f99d", accent: "#4d7c0f" },
+];
+
+const workMetrics: Array<{ value: string; label: string; icon: LucideIcon }> = [
+  { value: "70%+", label: "Less manual work through smarter workflows", icon: Workflow },
+  { value: "2-5x", label: "Faster operations and delivery turnaround", icon: ArrowUpRight },
+  { value: "Data", label: "Clearer visibility for better decisions", icon: Code2 },
+  { value: "Scale", label: "Systems designed to grow with the business", icon: Sparkles },
 ];
 
 const websiteWork = [
@@ -224,42 +232,73 @@ function Reveal({
 
 function ScrollTheater() {
   const targetRef = useRef<HTMLDivElement>(null);
+  const [activeProject, setActiveProject] = useState(0);
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start end", "end start"],
   });
-  const rotate = useTransform(scrollYProgress, [0, 1], [-8, 8]);
-  const y = useTransform(scrollYProgress, [0, 1], [90, -90]);
-  const clip = useTransform(
-    scrollYProgress,
-    [0, 0.5, 1],
-    ["polygon(0 10%, 100% 0, 100% 86%, 0 100%)", "polygon(0 0, 100% 8%, 100% 100%, 0 90%)", "polygon(0 8%, 100% 0, 100% 88%, 0 100%)"],
-  );
+  const beamScale = useSpring(scrollYProgress, { stiffness: 90, damping: 24 });
+  const ambientOpacity = useTransform(scrollYProgress, [0, 0.45, 1], [0.2, 0.95, 0.35]);
+  const activeTheme = projectThemes[activeProject % projectThemes.length];
 
   return (
-    <section id="work" ref={targetRef} className="relative min-h-[110vh] overflow-hidden bg-[#f7faf7] py-24 text-[#0b1220] sm:py-32">
+    <section id="work" ref={targetRef} className="relative overflow-hidden bg-[#071016] py-24 text-white sm:py-32">
       <motion.div
-        className="absolute inset-x-0 top-0 h-28 bg-[#071016]"
-        style={{ clipPath: "polygon(0 0, 100% 0, 100% 26%, 0 100%)" }}
+        aria-hidden="true"
+        className="absolute -left-40 top-24 h-[760px] w-[760px] rounded-full border border-teal-300/20"
+        style={{ opacity: ambientOpacity }}
       />
-      <div className="mx-auto grid w-full max-w-[1180px] gap-10 px-4 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-        <Reveal className="sticky top-24 hidden lg:block">
-          <p className="font-mono text-xs uppercase text-teal-700">My Work</p>
-          <h2 className="mt-5 text-5xl font-semibold leading-[1.04] text-[#0b1220]">
-            Technology that turns busy operations into business momentum.
-          </h2>
-          <p className="mt-6 max-w-sm text-base leading-7 text-slate-600">
-            Each build connects process, data, automation, and customer experience so teams move faster, reduce manual work, and see clearer decisions.
-          </p>
-        </Reveal>
+      <motion.div
+        aria-hidden="true"
+        className="absolute right-0 top-0 h-full w-1/2"
+        style={{
+          opacity: ambientOpacity,
+          background: `radial-gradient(circle at 70% 24%, ${activeTheme.border}33, transparent 34%), radial-gradient(circle at 30% 72%, ${activeTheme.border}1f, transparent 36%)`,
+        }}
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] bg-[size:72px_72px]" />
 
-        <div className="space-y-5">
-          <Reveal className="lg:hidden">
-            <p className="font-mono text-xs uppercase text-teal-700">Selected Work</p>
-            <h2 className="mt-5 text-4xl font-semibold leading-tight text-[#0b1220]">
+      <div className="relative mx-auto grid w-full max-w-[1280px] gap-12 px-4 lg:grid-cols-[0.42fr_0.58fr] lg:items-start">
+        <div className="lg:sticky lg:top-24">
+          <div>
+            <p className="font-mono text-xs uppercase text-teal-200">My Work</p>
+            <div className="mt-4 h-px w-16 bg-teal-300" />
+            <h2 className="mt-8 max-w-xl text-4xl font-semibold leading-[1.05] text-white sm:text-5xl lg:text-6xl">
               Technology that turns busy operations into business momentum.
             </h2>
-          </Reveal>
+            <p className="mt-7 max-w-md text-base leading-7 text-white/68">
+              Each build connects process, data, automation, and customer experience so teams move faster, reduce manual work, and see clearer decisions.
+            </p>
+          </div>
+
+          <div className="mt-10 grid grid-cols-2 border border-white/10 bg-white/[0.035]">
+            {workMetrics.map(({ value, label, icon: Icon }) => (
+              <div key={value} className="min-h-32 border-b border-r border-white/10 p-5 even:border-r-0 last:border-b-0 [&:nth-last-child(2)]:border-b-0">
+                <Icon className="h-6 w-6 text-teal-200" />
+                <p className="mt-5 text-2xl font-semibold text-white">{value}</p>
+                <p className="mt-2 text-xs leading-5 text-white/54">{label}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 hidden items-center gap-4 lg:flex">
+            <div className="relative h-44 w-px overflow-hidden bg-white/15">
+              <motion.div className="absolute left-0 top-0 h-full w-full origin-top bg-teal-300" style={{ scaleY: beamScale }} />
+            </div>
+            <div>
+              <p className="font-mono text-xs uppercase text-white/45">Viewing</p>
+              <p className="mt-2 font-mono text-sm text-teal-200">
+                {String(activeProject + 1).padStart(2, "0")} / {String(recentProjects.length).padStart(2, "0")}
+              </p>
+              <p className="mt-4 max-w-[12rem] text-sm leading-6 text-white/58">{recentProjects[activeProject].name}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative">
+          <div className="absolute bottom-8 left-7 top-8 hidden w-px bg-white/12 md:block">
+            <motion.div className="absolute left-0 top-0 h-full w-full origin-top bg-amber-300" style={{ scaleY: beamScale }} />
+          </div>
           {recentProjects.map((project, index) => {
             const theme = projectThemes[index % projectThemes.length];
 
@@ -269,42 +308,47 @@ function ScrollTheater() {
                 href={project.href}
                 target="_blank"
                 rel="noreferrer"
-                className="group relative block overflow-hidden border border-[#0b1220]/10 p-px shadow-[0_24px_80px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:border-transparent"
-                style={{ rotate: index % 2 === 0 ? rotate : undefined, y: index % 2 ? y : undefined, clipPath: index === 0 ? clip : undefined }}
-                initial={{ opacity: 0, x: 70 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.7, delay: index * 0.04 }}
+                className="group relative mb-5 ml-0 block overflow-hidden p-px shadow-[0_28px_100px_rgba(0,0,0,0.28)] md:ml-16"
+                initial={{ opacity: 1, x: 0, rotateX: 0, filter: "blur(0px)" }}
+                whileInView={{ opacity: 1, x: 0, rotateX: 0, filter: "blur(0px)" }}
+                viewport={{ once: false, amount: 0.36, margin: "-12% 0px -12% 0px" }}
+                transition={{ duration: 0.72, delay: Math.min(index * 0.03, 0.18), ease: [0.22, 1, 0.36, 1] }}
+                onViewportEnter={() => setActiveProject(index)}
+                whileHover={{ y: -8, scale: 1.015 }}
               >
                 <span
+                  className="absolute -left-[4.55rem] top-8 hidden h-12 w-12 place-items-center rounded-full border bg-[#071016] font-mono text-sm md:grid"
+                  style={{ borderColor: theme.border, color: theme.border, boxShadow: `0 0 34px ${theme.border}55` }}
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span
                   aria-hidden="true"
-                  className="absolute -inset-48 opacity-0 transition duration-500 group-hover:animate-spin group-hover:opacity-100"
+                  className="absolute -inset-64 opacity-0 transition duration-500 group-hover:animate-spin group-hover:opacity-100"
                   style={{
                     background: `conic-gradient(from 180deg, transparent 0deg, ${theme.border} 90deg, transparent 180deg, ${theme.border} 270deg, transparent 360deg)`,
                   }}
                 />
                 <span
                   aria-hidden="true"
-                  className="absolute inset-px transition duration-500 group-hover:brightness-[1.03]"
-                  style={{ backgroundColor: theme.bg }}
+                  className="absolute inset-px border border-white/10 bg-[#0b141b] transition duration-500 group-hover:border-transparent"
+                  style={{
+                    background: `linear-gradient(135deg, ${theme.border}18, rgba(7,16,22,0.98) 34%, rgba(7,16,22,0.92)), linear-gradient(90deg, rgba(255,255,255,0.06), transparent)`,
+                    clipPath: "polygon(0 0, 98% 0, 100% 14%, 97% 100%, 0 100%)",
+                  }}
                 />
-                <span className="relative z-10 block p-5 sm:p-7">
-                  <span className="flex items-start justify-between gap-6">
-                    <span>
-                      <span className="font-mono text-xs uppercase" style={{ color: theme.accent }}>{project.type} / {project.year}</span>
-                      <span className="mt-3 block text-3xl font-semibold text-[#0b1220]">{project.name}</span>
-                    </span>
-                    <ArrowUpRight
-                      className="mt-2 h-6 w-6 transition group-hover:translate-x-1 group-hover:-translate-y-1"
-                      style={{ color: theme.accent }}
-                    />
+                <span className="relative z-10 grid min-h-[190px] gap-6 p-6 sm:p-8 lg:grid-cols-[1fr_220px] lg:items-center">
+                  <span>
+                    <span className="font-mono text-xs uppercase tracking-wide" style={{ color: theme.border }}>{project.type} / {project.year}</span>
+                    <span className="mt-4 block text-3xl font-semibold text-white sm:text-4xl">{project.name}</span>
+                    <span className="mt-5 block max-w-2xl text-base leading-7 text-white/68">{project.summary}</span>
                   </span>
-                  <span className="mt-5 block max-w-2xl text-base leading-7 text-slate-600">{project.summary}</span>
-                  <span
-                    className="mt-6 block border-t pt-4 font-mono text-xs text-slate-500"
-                    style={{ borderColor: theme.line }}
-                  >
-                    {project.stack}
+                  <span className="flex items-end justify-between gap-4 border-t border-white/10 pt-5 lg:border-l lg:border-t-0 lg:py-3 lg:pl-7">
+                    <span className="font-mono text-xs leading-6 text-white/58">{project.stack}</span>
+                    <ArrowUpRight
+                      className="h-7 w-7 shrink-0 transition group-hover:translate-x-1 group-hover:-translate-y-1"
+                      style={{ color: theme.border }}
+                    />
                   </span>
                 </span>
               </motion.a>
@@ -325,9 +369,9 @@ export function PortfolioExperience() {
 
   const stats = useMemo(
     () => [
-      ["10+", "years shipping web products"],
-      ["16+", "sites from the CV portfolio"],
-      ["2026", "recent AI and product systems"],
+      ["10+", "years shipping websites and applications"],
+      ["16+", "years of Full-Stack development experience"],
+      ["2026", "AI automation and Full-Stack product systems"],
     ],
     [],
   );
@@ -362,14 +406,14 @@ export function PortfolioExperience() {
 
       <section className="relative min-h-screen overflow-hidden pt-16">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.04)_1px,transparent_1px)] bg-[size:72px_72px]" />
-        <div className="absolute bottom-0 left-0 h-36 w-full bg-[#f7faf7]" style={{ clipPath: "polygon(0 66%, 100% 15%, 100% 100%, 0 100%)" }} />
+        <div className="absolute bottom-0 left-0 h-36 w-full bg-[#071016]" style={{ clipPath: "polygon(0 66%, 100% 15%, 100% 100%, 0 100%)" }} />
         <div className="relative z-10 mx-auto grid min-h-[calc(100vh-64px)] w-full max-w-[1180px] items-center gap-12 px-4 py-16 lg:grid-cols-[1.02fr_.98fr]">
           <div className="min-w-0">
             <h1 className="max-w-4xl text-5xl font-semibold leading-[0.98] text-white sm:text-7xl lg:text-8xl">
               Eric Sangcap
             </h1>
             <p className="mt-8 max-w-[320px] whitespace-normal text-xl leading-8 text-white/82 sm:max-w-2xl sm:text-2xl sm:leading-9">
-              Full-Stack Web Developer building Shopify, WordPress, React, Next.js, and AI Automation systems that turn business ideas into working products.
+              Full-Stack Engineer and AI Automation Specialist building Shopify, WordPress, React, Next.js, and AI Automation systems that turn business ideas into working products.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a className="inline-flex h-[52px] items-center justify-center gap-2 bg-teal-300 px-6 text-sm font-semibold text-[#071016] transition hover:bg-white" href="/downloads/eric-sangcap-cv.pdf" download>
@@ -404,7 +448,7 @@ export function PortfolioExperience() {
             />
             <div className="absolute bottom-10 left-0 z-20 max-w-[260px] border border-white/16 bg-[#071016]/80 p-4 backdrop-blur">
               <p className="font-mono text-xs uppercase text-amber-200">Current edge</p>
-              <p className="mt-2 text-sm leading-6 text-white/72">AI assistants, n8n workflows, commerce automation, and high-conversion product interfaces.</p>
+              <p className="mt-2 text-sm leading-6 text-white/72">Full Stack Engineer and AI automation specialist</p>
             </div>
             <div className="relative ml-auto h-[540px] w-full max-w-[500px] overflow-visible">
               <Image
