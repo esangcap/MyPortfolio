@@ -66,7 +66,7 @@ const recentProjects = [
       "Implemented a marketing experience from a Figma code bundle with ROI storytelling, video assets, and responsive product sections.",
   },
   {
-    name: "Dylux.com",
+    name: "Dylux.com, US",
     type: "Shopify theme merge",
     year: "2026",
     href: "https://dylux.com",
@@ -146,7 +146,7 @@ const testimonials = [
 ];
 
 const timeline = [
-  ["2026", "Recent product systems", "PeopleLens AU, Panadero UAE, Teamio, DyluxMerge, FourEditors 2026, PremierCE Theme, and QR Order."],
+  ["2026", "Full Stack Engineer | AI automations", "PeopleLens AU, Panadero UAE, Teamio, DyluxMerge, FourEditors 2026, PremierCE Theme, and QR Order."],
   ["2025", "Shopify project delivery", "utilise social, AVAMIA, DAM Health, Dr. Franks, Uniquely Lola James, and Screen Shaver."],
   ["2024", "Membership commerce", "slideshop.com rebuild with paid-member template download restrictions."],
   ["2022-2024", "Lead Shopify developer", "getboomba.com conversion features, theme customization, and stakeholder delivery."],
@@ -532,7 +532,7 @@ export function PortfolioExperience() {
 
       <footer className="border-t border-white/10 bg-[#071016] py-8">
         <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-3 px-4 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between">
-          <p>Eric Sangcap / Full-Stack Web Developer</p>
+          <p>Eric Sangcap / Full-Stack Engineer</p>
           <p>Next.js, Tailwind CSS, motion, Lenis</p>
         </div>
       </footer>
