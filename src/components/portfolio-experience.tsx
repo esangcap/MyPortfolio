@@ -258,7 +258,7 @@ function ScrollTheater() {
     <section id="work" ref={targetRef} className="relative overflow-hidden bg-[#071016] py-24 text-white sm:py-32">
       <motion.div
         aria-hidden="true"
-        className="absolute -left-40 top-24 h-[760px] w-[760px] rounded-full border border-teal-300/20"
+        className="absolute -left-40 top-24 h-190 w-190 rounded-full border border-teal-300/20"
         style={{ opacity: ambientOpacity }}
       />
       <motion.div
@@ -269,9 +269,9 @@ function ScrollTheater() {
           background: `radial-gradient(circle at 70% 24%, ${activeTheme.border}33, transparent 34%), radial-gradient(circle at 30% 72%, ${activeTheme.border}1f, transparent 36%)`,
         }}
       />
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] bg-[size:72px_72px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] bg-size-[72px_72px]" />
 
-      <div className="relative mx-auto grid w-full max-w-[1280px] gap-12 px-4 lg:grid-cols-[0.42fr_0.58fr] lg:items-start">
+      <div className="relative mx-auto grid w-full max-w-320 gap-12 px-4 lg:grid-cols-[0.42fr_0.58fr] lg:items-start">
         <div className="lg:sticky lg:top-24">
           <div>
             <p className="font-mono text-xs uppercase text-teal-200">My Work</p>
@@ -286,7 +286,7 @@ function ScrollTheater() {
 
           <div className="mt-10 grid grid-cols-2 border border-white/10 bg-white/[0.035]">
             {workMetrics.map(({ value, label, icon: Icon }) => (
-              <div key={value} className="min-h-32 border-b border-r border-white/10 p-5 even:border-r-0 last:border-b-0 [&:nth-last-child(2)]:border-b-0">
+              <div key={value} className="min-h-32 border-b border-r border-white/10 p-5 even:border-r-0 last:border-b-0 nth-last-2:border-b-0">
                 <Icon className="h-6 w-6 text-teal-200" />
                 <p className="mt-5 text-2xl font-semibold text-white">{value}</p>
                 <p className="mt-2 text-xs leading-5 text-white/54">{label}</p>
@@ -303,7 +303,7 @@ function ScrollTheater() {
               <p className="mt-2 font-mono text-sm text-teal-200">
                 {String(activeProject + 1).padStart(2, "0")} / {String(recentProjects.length).padStart(2, "0")}
               </p>
-              <p className="mt-4 max-w-[12rem] text-sm leading-6 text-white/58">{recentProjects[activeProject].name}</p>
+              <p className="mt-4 max-w-48 text-sm leading-6 text-white/58">{recentProjects[activeProject].name}</p>
             </div>
           </div>
         </div>
@@ -330,7 +330,7 @@ function ScrollTheater() {
                 whileHover={{ y: -8, scale: 1.015 }}
               >
                 <span
-                  className="absolute -left-[4.55rem] top-8 hidden h-12 w-12 place-items-center rounded-full border bg-[#071016] font-mono text-sm md:grid"
+                  className="absolute -left-18 top-8 hidden h-12 w-12 place-items-center rounded-full border bg-[#071016] font-mono text-sm md:grid"
                   style={{ borderColor: theme.border, color: theme.border, boxShadow: `0 0 34px ${theme.border}55` }}
                 >
                   {String(index + 1).padStart(2, "0")}
@@ -350,7 +350,7 @@ function ScrollTheater() {
                     clipPath: "polygon(0 0, 98% 0, 100% 14%, 97% 100%, 0 100%)",
                   }}
                 />
-                <span className="relative z-10 grid min-h-[190px] gap-6 p-6 sm:p-8 lg:grid-cols-[1fr_220px] lg:items-center">
+                <span className="relative z-10 grid min-h-48 gap-6 p-6 sm:p-8 lg:grid-cols-[1fr_220px] lg:items-center">
                   <span>
                     <span className="font-mono text-xs uppercase tracking-wide" style={{ color: theme.border }}>{project.type} / {project.year}</span>
                     <span className="mt-4 block text-3xl font-semibold text-white sm:text-4xl">{project.name}</span>
@@ -395,7 +395,7 @@ export function PortfolioExperience() {
       <motion.div className="fixed left-0 top-0 z-50 h-1 origin-left bg-teal-300" style={{ scaleX: progress }} />
 
       <header className="fixed inset-x-0 top-0 z-40 border-b border-white/10 bg-[#071016]/72 backdrop-blur-xl">
-        <nav className="mx-auto flex h-16 w-full max-w-[1180px] items-center justify-between px-4">
+        <nav className="mx-auto flex h-16 w-full max-w-295 items-center justify-between px-4">
           <a href="#" className="font-mono text-sm uppercase text-white">ES / 2026</a>
           <div className="hidden items-center gap-7 md:flex">
             {navigation.map((item) => (
@@ -418,22 +418,22 @@ export function PortfolioExperience() {
       </header>
 
       <section className="relative min-h-screen overflow-hidden pt-16">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.04)_1px,transparent_1px)] bg-[size:72px_72px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.04)_1px,transparent_1px)] bg-size-[72px_72px]" />
         <div className="absolute bottom-0 left-0 h-36 w-full bg-[#071016]" style={{ clipPath: "polygon(0 66%, 100% 15%, 100% 100%, 0 100%)" }} />
-        <div className="relative z-10 mx-auto grid min-h-[calc(100vh-64px)] w-full max-w-[1180px] items-center gap-12 px-4 py-16 lg:grid-cols-[1.02fr_.98fr]">
+        <div className="relative z-10 mx-auto grid min-h-[calc(100vh-64px)] w-full max-w-295 items-center gap-12 px-4 py-16 lg:grid-cols-[1.02fr_.98fr]">
           <div className="min-w-0">
             <h1 className="max-w-4xl text-5xl font-semibold leading-[0.98] text-white sm:text-7xl lg:text-8xl">
               Eric Sangcap
             </h1>
-            <p className="mt-8 max-w-[320px] whitespace-normal text-xl leading-8 text-white/82 sm:max-w-2xl sm:text-2xl sm:leading-9">
+            <p className="mt-8 max-w-80 whitespace-normal text-xl leading-8 text-white/82 sm:max-w-2xl sm:text-2xl sm:leading-9">
               Full-Stack Engineer and AI Automation Specialist building Shopify, WordPress, React, Next.js, and AI Automation systems that turn business ideas into working products.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a className="inline-flex h-[52px] items-center justify-center gap-2 bg-teal-300 px-6 text-sm font-semibold text-[#071016] transition hover:bg-white" href="/downloads/eric-sangcap-cv.pdf" download>
+              <a className="inline-flex h-13 items-center justify-center gap-2 bg-teal-300 px-6 text-sm font-semibold text-[#071016] transition hover:bg-white" href="/downloads/eric-sangcap-cv.pdf" download>
                 <Download className="h-4 w-4" />
                 Download PDF
               </a>
-              <a className="inline-flex h-[52px] items-center justify-center gap-2 border border-white/18 px-6 text-sm font-semibold text-white transition hover:border-amber-300 hover:text-amber-200" href="/downloads/eric-sangcap-cv.docx" download>
+              <a className="inline-flex h-13 items-center justify-center gap-2 border border-white/18 px-6 text-sm font-semibold text-white transition hover:border-amber-300 hover:text-amber-200" href="/downloads/eric-sangcap-cv.docx" download>
                 <FileText className="h-4 w-4" />
                 Download DOC
               </a>
@@ -448,7 +448,7 @@ export function PortfolioExperience() {
             </div>
           </div>
 
-          <div className="relative min-h-[520px] min-w-0">
+          <div className="relative min-h-130 min-w-0">
             <motion.div
               className="absolute inset-7 border border-teal-300/35"
               animate={{ rotate: [0, 2, -1, 0], scale: [1, 1.02, 1] }}
@@ -459,16 +459,16 @@ export function PortfolioExperience() {
               animate={{ y: [0, 26, 0], rotate: [12, -8, 12] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             />
-            <div className="absolute bottom-10 left-0 z-20 max-w-[260px] border border-white/16 bg-[#071016]/80 p-4 backdrop-blur">
+            <div className="absolute bottom-10 left-0 z-20 max-w-65 border border-white/16 bg-[#071016]/80 p-4 backdrop-blur">
               <p className="font-mono text-xs uppercase text-amber-200">Current edge</p>
               <p className="mt-2 text-sm leading-6 text-white/72">Full Stack Engineer and AI automation specialist</p>
             </div>
-            <div className="group relative ml-auto h-[620px] w-full max-w-[540px] overflow-visible outline-none" tabIndex={0} aria-label="Eric Sangcap tech stack portrait interaction">
+            <div className="group relative ml-auto h-155 w-full max-w-135 overflow-visible outline-none" tabIndex={0} aria-label="Eric Sangcap tech stack portrait interaction">
               <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-2 w-2 -translate-x-1/2 -translate-y-1/2">
                 {techStackLogos.map((logo) => (
                   <span
                     key={logo.name}
-                    className="tech-burst-logo absolute left-1/2 top-1/2 grid h-16 w-16 place-items-center rounded-full border border-white/10 bg-[#071016]/90 opacity-0 backdrop-blur-xl sm:h-[72px] sm:w-[72px]"
+                    className="tech-burst-logo absolute left-1/2 top-1/2 grid h-16 w-16 place-items-center rounded-full border border-white/10 bg-[#071016]/90 opacity-0 backdrop-blur-xl sm:h-18 sm:w-18"
                     style={{
                       "--logo-x": logo.x,
                       "--logo-y": logo.y,
@@ -505,7 +505,7 @@ export function PortfolioExperience() {
       <ScrollTheater />
 
       <section id="stack" className="relative overflow-hidden bg-[#071016] py-24 sm:py-32">
-        <div className="mx-auto w-full max-w-[1180px] px-4">
+        <div className="mx-auto w-full max-w-295 px-4">
           <Reveal className="max-w-3xl">
             <p className="font-mono text-xs uppercase text-teal-200">Stack</p>
             <h2 className="mt-5 text-4xl font-semibold leading-tight sm:text-6xl">One developer across storefronts, apps, automations, and cloud glue.</h2>
@@ -530,7 +530,7 @@ export function PortfolioExperience() {
       </section>
 
       <section id="proof" className="relative bg-[#f7faf7] py-24 text-[#0b1220] sm:py-32">
-        <div className="mx-auto w-full max-w-[1180px] px-4">
+        <div className="mx-auto w-full max-w-295 px-4">
           <Reveal className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
               <p className="font-mono text-xs uppercase text-amber-700">Client Proof</p>
@@ -556,7 +556,7 @@ export function PortfolioExperience() {
 
       <section id="timeline" className="relative overflow-hidden bg-[#071016] py-24 sm:py-32">
         <div className="absolute inset-y-0 left-1/2 hidden w-px bg-white/12 lg:block" />
-        <div className="mx-auto w-full max-w-[1180px] px-4">
+        <div className="mx-auto w-full max-w-295 px-4">
           <Reveal className="max-w-3xl">
             <p className="font-mono text-xs uppercase text-teal-200">Timeline</p>
             <h2 className="mt-5 text-4xl font-semibold leading-tight sm:text-6xl">From enterprise web systems to fast-moving AI-enabled products.</h2>
@@ -584,7 +584,7 @@ export function PortfolioExperience() {
           animate={{ clipPath: ["polygon(0 0, 100% 8%, 96% 100%, 4% 92%)", "polygon(3% 10%, 96% 0, 100% 91%, 0 100%)", "polygon(0 0, 100% 8%, 96% 100%, 4% 92%)"] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
-        <div className="relative mx-auto grid w-full max-w-[1180px] gap-10 px-4 lg:grid-cols-[1fr_.7fr] lg:items-end">
+        <div className="relative mx-auto grid w-full max-w-295 gap-10 px-4 lg:grid-cols-[1fr_.7fr] lg:items-end">
           <Reveal>
             <h2 className="text-5xl font-semibold leading-[1.02] sm:text-7xl">Let&apos;s build the next one.</h2>
             <p className="mt-8 max-w-2xl text-xl leading-8 text-[#071016]/72">
@@ -609,7 +609,7 @@ export function PortfolioExperience() {
       </section>
 
       <footer className="border-t border-white/10 bg-[#071016] py-8">
-        <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-3 px-4 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex w-full max-w-295 flex-col gap-3 px-4 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between">
           <p>Eric Sangcap / Full-Stack Engineer</p>
           <p>Next.js, Tailwind CSS, motion, Lenis</p>
         </div>
