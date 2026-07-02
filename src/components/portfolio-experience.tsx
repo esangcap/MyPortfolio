@@ -164,6 +164,20 @@ const testimonials = [
     role: "Operations Manager, Neuftech",
     image: "/proof/axelb.jpg",
   },
+  {
+    quote:
+      "Very very happy with Eric. He did AI automation for our Email support and it works perfect! He is very reliable, quick in response and works hard. I 110% recommend him!",
+    name: "Daniel Schouten",
+    role: "CEO, SR Technology BV",
+    image: "/proof/daniel_schouten.jpg",
+  },
+  {
+    quote:
+      "Eric did a great job developing my website for me and I was extremely impressed with the results. He clearly has a passion for what he does, and it shows in his work.",
+    name: "Travis Holvey",
+    role: "CEO, SweetDreamz & Kalposi AU",
+    image: "/proof/travis_holvey.jpg",
+  },
 ];
 
 const timeline = [
